@@ -15,8 +15,8 @@ st.title("🌍 使用服務帳戶連接 GEE 的 Streamlit App")
 
 
 
-ee.Initialize(credentials=lwyi2929)
-
+#ee.Initialize(credentials=lwyi2929)
+ee.Initialize(credentials=credentials) 
 
 point = ee.Geometry.Point([120.5583462887228, 24.081653403304525])
 
