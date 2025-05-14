@@ -1,11 +1,3 @@
-
-
-
-
-point = ee.Geometry.Point([120.5583462887228, 24.081653403304525])
-
-
-
 import streamlit as st
 import ee
 from google.oauth2 import service_account
@@ -14,16 +6,16 @@ import geemap.foliumap as geemap
 # 從 Streamlit Secrets 讀取 GEE 服務帳戶金鑰 JSON
 service_account_info = st.secrets["GEE_SERVICE_ACCOUNT"]
 
-lwyi2929 = service_account.Credentials.from_service_account_info(
+credentials  = service_account.Credentials.from_service_account_info(
     service_account_info,
     scopes=["https://www.googleapis.com/auth/earthengine"]
 )
 st.set_page_config(layout="wide")
 st.title("🌍 使用服務帳戶連接 GEE 的 Streamlit App")
 
-ee.Authenticate()
-ee.Initialize(project='lwyi2929')
 
+
+ee.Initialize(credentials=lwyi2929)
 
 
 point = ee.Geometry.Point([120.5583462887228, 24.081653403304525])
@@ -91,9 +83,9 @@ my_Map.add_legend(title='Land Cover Type', legend_dict=legend_dict, position='bo
 
 # 建立左右分割地圖
 left_layer = geemap.ee_tile_layer(result001.randomVisualizer(), {}, 'K-Means clusters')
-right_layer = geemap.ee_tile_layer(my_image.visualize(**vis_params), {}, 'S2 flase color')
+right_layer = geemap.ee_tile_layer(my_image.visualize(**vis_params), {}, 'S2 false color')
 my_Map.split_map(left_layer, right_layer)
-my_Map
+
 # 顯示地圖在 Streamlit
-#my_Map.to_streamlit(height=600)
+my_Map.to_streamlit(height=600)
 
