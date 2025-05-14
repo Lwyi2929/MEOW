@@ -80,6 +80,6 @@ my_Map.to_streamlit(height=600)
 
 
 # 顯示地圖
-#Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=10)
+Map = geemap.Map(center=[120.5583462887228, 24.081653403304525], zoom=10)
 
 
