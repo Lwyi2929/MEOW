@@ -15,8 +15,8 @@ st.sidebar.image(logo)
 
 st.title("Heatmap")
 
-with st.expander("See source code"):#按鈕
-    with st.echo():
+with st.expander("See source code"):#按鈕擴充器
+    with st.echo():#展示程式碼
         filepath = "us_cities.csv"
         m = leafmap.Map(center=[40, -100], zoom=4)
         m.add_heatmap(
